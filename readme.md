@@ -49,13 +49,14 @@ DATABASE_ROOT_PASSWORD=your_ultra_secure_root_password
 2. Database Template (server/mysql.ini.tmpl)
 Этот шаблон используется для генерации конфига:
 
-[mysql]
+```bash
+
 hostname = ${MYSQL_CONNECT_HOST}
 username = ${MYSQL_CONNECT_USER}
 password = ${MYSQL_CONNECT_PASS}
 database = ${MYSQL_CONNECT_DBNAME}
 port = ${MYSQL_CONNECT_PORT}
-
+```
 ## 🚀 Deployment
 
 ### 1. Prepare Permissions
