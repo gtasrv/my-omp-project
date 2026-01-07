@@ -1,10 +1,10 @@
-# ?? OMP Server Docker Stack
+# ğŸš€ OMP Server Docker Stack
 
 This project provides a fully automated, containerized environment for **Open Multiplayer (OMP)** development. It features a Node.js supervisor for **Auto-Restart on re-compile**, a pre-configured **MariaDB** database, and **phpMyAdmin** for easy data management.
 
 ---
 
-## ?? System Architecture
+## ğŸ— System Architecture
 
 The environment is orchestrated using Docker Compose and consists of three main layers:
 
@@ -14,25 +14,25 @@ The environment is orchestrated using Docker Compose and consists of three main 
 
 ---
 
-## ?? Project Structure
+## ğŸ“‚ Project Structure
 
 For the system to work correctly, organize your files as follows:
 
 ```text
 
-??? .env                     # Configuration and passwords
-??? docker-compose.yml       # Service definitions
-??? server/
-    ??? Dockerfile           # Build instructions
-    ??? entrypoint.sh        # Runtime config generator
-    ??? app.js               # Node.js auto-restart supervisor
-    ??? package.json         # Node.js dependencies (iconv-lite)
-    ??? mysql.ini.tmpl       # Template for database connection
-    ??? omp-server           # OMP Linux binary
-    ??? gamemodes_dev/       # Directory for .amx compilation
+â”œâ”€â”€ .env                     # Configuration and passwords
+â”œâ”€â”€ docker-compose.yml       # Service definitions
+â””â”€â”€ server/
+    â”œâ”€â”€ Dockerfile           # Build instructions
+    â”œâ”€â”€ entrypoint.sh        # Runtime config generator
+    â”œâ”€â”€ app.js               # Node.js auto-restart supervisor
+    â”œâ”€â”€ package.json         # Node.js dependencies (iconv-lite)
+    â”œâ”€â”€ mysql.ini.tmpl       # Template for database connection
+    â”œâ”€â”€ omp-server           # OMP Linux binary
+    â””â”€â”€ gamemodes_dev/       # Directory for .amx compilation
 ```
 
-## ?? Configuration
+## âš™ï¸ Configuration
 
 ### 1. Environment Variables (`.env`)
 
@@ -47,7 +47,7 @@ DATABASE_ROOT_PASSWORD=your_ultra_secure_root_password
 ```
 
 2. Database Template (server/mysql.ini.tmpl)
-İòîò øàáëîí èñïîëüçóåòñÿ äëÿ ãåíåğàöèè êîíôèãà:
+Ğ­Ñ‚Ğ¾Ñ‚ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·ÑƒĞµÑ‚ÑÑ Ğ´Ğ»Ñ Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ğ¸ ĞºĞ¾Ğ½Ñ„Ğ¸Ğ³Ğ°:
 
 [mysql]
 hostname = ${MYSQL_CONNECT_HOST}
@@ -56,7 +56,7 @@ password = ${MYSQL_CONNECT_PASS}
 database = ${MYSQL_CONNECT_DBNAME}
 port = ${MYSQL_CONNECT_PORT}
 
-## ?? Deployment
+## ğŸš€ Deployment
 
 ### 1. Prepare Permissions
 Ensure your scripts and binaries have executable permissions before building:
@@ -75,14 +75,14 @@ To see the OMP console and auto-restart triggers in real-time:
 ```bash
 docker logs -f server_omp
 ```
-### ?? Hot-Reload Logic (isDev)
+### ğŸ”„ Hot-Reload Logic (isDev)
 The system is optimized for active Pawn development. When isDev=1 is set in your .env:
 Watch: Node.js monitors changes to ./server/gamemodes_dev/new.amx.
 Trigger: Upon successful compilation, the supervisor detects the file change.
 Update: It automatically copies the updated .amx to the live gamemodes/ folder.
 Restart: The omp-server process is killed and restarted after a 7-second delay to ensure the UDP port is fully freed.
 
-### ?? Important Notes
+### âš ï¸ Important Notes
 Encoding: The supervisor uses iconv-lite to handle CP1251 encoding, ensuring Russian text displays correctly in the Docker console.
 Persistence: Your database data is stored in the mysql_data volume and will not be lost if the container is stopped or deleted.
 
