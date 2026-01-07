@@ -1,0 +1,207 @@
+[01/05/26 21:49:17] [INFO] changed log level from 'warning, error' to 'debug, info, warning, error'
+[01/05/26 21:49:17] [DEBUG] mysql_connect_file("mysql.ini")
+[01/05/26 21:49:17] [DEBUG] CHandleManager::CreateFromFile(this=0x9c4fcb0, file_path='mysql.ini')
+[01/05/26 21:49:17] [INFO] Options instance with id '1' successfully created.
+[01/05/26 21:49:17] [DEBUG] CHandleManager::CreateFromFile - new options = 0x9c27350 (id '1')
+[01/05/26 21:49:17] [DEBUG] CHandleManager::Create(this=0x9c4fcb0, host='mysql_db', user='root', pass='****', db='my_server', options=0x9c27350)
+[01/05/26 21:49:17] [INFO] Creating new connection handle...
+[01/05/26 21:49:17] [DEBUG] CConnection::CConnection(this=0x9c504b0, host='mysql_db', user='root', passw='****', db='my_server', options=0x9c27350)
+[01/05/26 21:49:17] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:17] [DEBUG] CConnection::CConnection(this=0xf3e5a010, host='mysql_db', user='root', passw='****', db='my_server', options=0x9c27350)
+[01/05/26 21:49:17] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:17] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf3e5a010, connection=0xf3e5a010)
+[01/05/26 21:49:17] [DEBUG] CConnectionPool::CConnectionPool(size=2, this=0x9c49400)
+[01/05/26 21:49:17] [DEBUG] CConnection::CConnection(this=0xf307d010, host='mysql_db', user='root', passw='****', db='my_server', options=0x9c27350)
+[01/05/26 21:49:17] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf3e5a010, connection=0xf3e5a010)
+[01/05/26 21:49:17] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:17] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf307d010, connection=0xf307d010)
+[01/05/26 21:49:17] [DEBUG] CConnection::CConnection(this=0xf2e7f010, host='mysql_db', user='root', passw='****', db='my_server', options=0x9c27350)
+[01/05/26 21:49:17] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf307d010, connection=0xf307d010)
+[01/05/26 21:49:17] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:17] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf2e7f010, connection=0xf2e7f010)
+[01/05/26 21:49:17] [INFO] Connection handle with id '1' successfully created.
+[01/05/26 21:49:17] [DEBUG] CHandleManager::Create - new handle = 0x9c50490
+[01/05/26 21:49:17] [DEBUG] mysql_connect_file: return value: '1'
+[01/05/26 21:49:17] [DEBUG] mysql_errno(1)
+[01/05/26 21:49:17] [DEBUG] CHandle::GetErrorId(this=0x9c50490)
+[01/05/26 21:49:17] [DEBUG] CConnection::GetError(this=0x9c504b0, connection=0x9c30bf0)
+[01/05/26 21:49:17] [DEBUG] CHandle::GetErrorId - return value: true, error id: '1045', error msg: 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:17] [DEBUG] mysql_errno: return value: '1045'
+[01/05/26 21:49:17] [DEBUG] mysql_errno(1)
+[01/05/26 21:49:17] [DEBUG] CHandle::GetErrorId(this=0x9c50490)
+[01/05/26 21:49:17] [DEBUG] CConnection::GetError(this=0x9c504b0, connection=0x9c30bf0)
+[01/05/26 21:49:17] [DEBUG] CHandle::GetErrorId - return value: true, error id: '1045', error msg: 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:17] [DEBUG] mysql_errno: return value: '1045'
+[01/05/26 21:49:17] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf2e7f010, connection=0xf2e7f010)
+[01/05/26 21:49:49] [INFO] changed log level from 'warning, error' to 'debug, info, warning, error'
+[01/05/26 21:49:49] [DEBUG] mysql_connect_file("mysql.ini")
+[01/05/26 21:49:49] [DEBUG] CHandleManager::CreateFromFile(this=0xb1a6c90, file_path='mysql.ini')
+[01/05/26 21:49:49] [INFO] Options instance with id '1' successfully created.
+[01/05/26 21:49:49] [DEBUG] CHandleManager::CreateFromFile - new options = 0xb17e360 (id '1')
+[01/05/26 21:49:49] [DEBUG] CHandleManager::Create(this=0xb1a6c90, host='mysql_db', user='root', pass='****', db='my_server', options=0xb17e360)
+[01/05/26 21:49:49] [INFO] Creating new connection handle...
+[01/05/26 21:49:49] [DEBUG] CConnection::CConnection(this=0xb1a74a0, host='mysql_db', user='root', passw='****', db='my_server', options=0xb17e360)
+[01/05/26 21:49:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:49] [DEBUG] CConnection::CConnection(this=0xf337e010, host='mysql_db', user='root', passw='****', db='my_server', options=0xb17e360)
+[01/05/26 21:49:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:49] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf337e010, connection=0xf337e010)
+[01/05/26 21:49:49] [DEBUG] CConnectionPool::CConnectionPool(size=2, this=0xb1a03f0)
+[01/05/26 21:49:49] [DEBUG] CConnection::CConnection(this=0xf2f7e010, host='mysql_db', user='root', passw='****', db='my_server', options=0xb17e360)
+[01/05/26 21:49:49] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf337e010, connection=0xf337e010)
+[01/05/26 21:49:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:49] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf2f7e010, connection=0xf2f7e010)
+[01/05/26 21:49:49] [DEBUG] CConnection::CConnection(this=0xf277d010, host='mysql_db', user='root', passw='****', db='my_server', options=0xb17e360)
+[01/05/26 21:49:49] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf2f7e010, connection=0xf2f7e010)
+[01/05/26 21:49:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #1045 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:49] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf277d010, connection=0xf277d010)
+[01/05/26 21:49:49] [INFO] Connection handle with id '1' successfully created.
+[01/05/26 21:49:49] [DEBUG] CHandleManager::Create - new handle = 0xb1a7480
+[01/05/26 21:49:49] [DEBUG] mysql_connect_file: return value: '1'
+[01/05/26 21:49:49] [DEBUG] mysql_errno(1)
+[01/05/26 21:49:49] [DEBUG] CHandle::GetErrorId(this=0xb1a7480)
+[01/05/26 21:49:49] [DEBUG] CConnection::GetError(this=0xb1a74a0, connection=0xb187bf0)
+[01/05/26 21:49:49] [DEBUG] CHandle::GetErrorId - return value: true, error id: '1045', error msg: 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:49] [DEBUG] mysql_errno: return value: '1045'
+[01/05/26 21:49:49] [DEBUG] mysql_errno(1)
+[01/05/26 21:49:49] [DEBUG] CHandle::GetErrorId(this=0xb1a7480)
+[01/05/26 21:49:49] [DEBUG] CConnection::GetError(this=0xb1a74a0, connection=0xb187bf0)
+[01/05/26 21:49:49] [DEBUG] CHandle::GetErrorId - return value: true, error id: '1045', error msg: 'Access denied for user 'root'@'172.20.0.4' (using password: YES)'
+[01/05/26 21:49:49] [DEBUG] mysql_errno: return value: '1045'
+[01/05/26 21:49:49] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf277d010, connection=0xf277d010)
+[01/05/26 21:53:43] [INFO] changed log level from 'warning, error' to 'debug, info, warning, error'
+[01/05/26 21:53:43] [DEBUG] mysql_connect_file("mysql.ini")
+[01/05/26 21:53:43] [DEBUG] CHandleManager::CreateFromFile(this=0xb3cdb10, file_path='mysql.ini')
+[01/05/26 21:53:43] [INFO] Options instance with id '1' successfully created.
+[01/05/26 21:53:43] [DEBUG] CHandleManager::CreateFromFile - new options = 0xb3a32c0 (id '1')
+[01/05/26 21:53:43] [DEBUG] CHandleManager::Create(this=0xb3cdb10, host='mysql_db', user='gta_service', pass='****', db='my_server', options=0xb3a32c0)
+[01/05/26 21:53:43] [INFO] Creating new connection handle...
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection(this=0xb3a5af0, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3a32c0)
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection - new connection = 0xb3acbf0
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection(this=0xf3e0a010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3a32c0)
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection - new connection = 0xb3a8030
+[01/05/26 21:53:43] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf3e0a010, connection=0xf3e0a010)
+[01/05/26 21:53:43] [DEBUG] CConnectionPool::CConnectionPool(size=2, this=0xb3e9450)
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection(this=0xf327e010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3a32c0)
+[01/05/26 21:53:43] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf3e0a010, connection=0xf3e0a010)
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection - new connection = 0xb39faa0
+[01/05/26 21:53:43] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf327e010, connection=0xf327e010)
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection(this=0xf2e7e010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3a32c0)
+[01/05/26 21:53:43] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf327e010, connection=0xf327e010)
+[01/05/26 21:53:43] [DEBUG] CConnection::CConnection - new connection = 0xb3974b0
+[01/05/26 21:53:43] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf2e7e010, connection=0xf2e7e010)
+[01/05/26 21:53:43] [INFO] Connection handle with id '1' successfully created.
+[01/05/26 21:53:43] [DEBUG] CHandleManager::Create - new handle = 0xb3a5ad0
+[01/05/26 21:53:43] [DEBUG] mysql_connect_file: return value: '1'
+[01/05/26 21:53:43] [DEBUG] mysql_errno(1)
+[01/05/26 21:53:43] [DEBUG] CHandle::GetErrorId(this=0xb3a5ad0)
+[01/05/26 21:53:43] [DEBUG] CConnection::GetError(this=0xb3a5af0, connection=0xb3acbf0)
+[01/05/26 21:53:43] [DEBUG] CHandle::GetErrorId - return value: true, error id: '0', error msg: ''
+[01/05/26 21:53:43] [DEBUG] mysql_errno: return value: '0'
+[01/05/26 21:53:43] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf2e7e010, connection=0xf2e7e010)
+[01/05/26 22:44:08] [INFO] changed log level from 'warning, error' to 'debug, info, warning, error'
+[01/05/26 22:44:08] [DEBUG] mysql_connect_file("mysql.ini")
+[01/05/26 22:44:08] [DEBUG] CHandleManager::CreateFromFile(this=0xb4eda90, file_path='mysql.ini')
+[01/05/26 22:44:08] [INFO] Options instance with id '1' successfully created.
+[01/05/26 22:44:08] [DEBUG] CHandleManager::CreateFromFile - new options = 0xb4c3240 (id '1')
+[01/05/26 22:44:08] [DEBUG] CHandleManager::Create(this=0xb4eda90, host='mysql_db', user='gta_service', pass='****', db='my_server', options=0xb4c3240)
+[01/05/26 22:44:08] [INFO] Creating new connection handle...
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection(this=0xb4c5a70, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb4c3240)
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection - new connection = 0xb4ccbf0
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection(this=0xf3e43010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb4c3240)
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection - new connection = 0xb4c8030
+[01/05/26 22:44:08] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf3e43010, connection=0xf3e43010)
+[01/05/26 22:44:08] [DEBUG] CConnectionPool::CConnectionPool(size=2, this=0xb509450)
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection(this=0xf327e010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb4c3240)
+[01/05/26 22:44:08] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf3e43010, connection=0xf3e43010)
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection - new connection = 0xb4bfaa0
+[01/05/26 22:44:08] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf327e010, connection=0xf327e010)
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection(this=0xf2a7d010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb4c3240)
+[01/05/26 22:44:08] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf327e010, connection=0xf327e010)
+[01/05/26 22:44:08] [DEBUG] CConnection::CConnection - new connection = 0xb4b74b0
+[01/05/26 22:44:08] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf2a7d010, connection=0xf2a7d010)
+[01/05/26 22:44:08] [INFO] Connection handle with id '1' successfully created.
+[01/05/26 22:44:08] [DEBUG] CHandleManager::Create - new handle = 0xb4c5a50
+[01/05/26 22:44:08] [DEBUG] mysql_connect_file: return value: '1'
+[01/05/26 22:44:08] [DEBUG] mysql_errno(1)
+[01/05/26 22:44:08] [DEBUG] CHandle::GetErrorId(this=0xb4c5a50)
+[01/05/26 22:44:08] [DEBUG] CConnection::GetError(this=0xb4c5a70, connection=0xb4ccbf0)
+[01/05/26 22:44:08] [DEBUG] CHandle::GetErrorId - return value: true, error id: '0', error msg: ''
+[01/05/26 22:44:08] [DEBUG] mysql_errno: return value: '0'
+[01/05/26 22:44:08] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf2a7d010, connection=0xf2a7d010)
+[01/05/26 22:44:33] [INFO] changed log level from 'warning, error' to 'debug, info, warning, error'
+[01/05/26 22:44:33] [DEBUG] mysql_connect_file("mysql.ini")
+[01/05/26 22:44:33] [DEBUG] CHandleManager::CreateFromFile(this=0xa047b20, file_path='mysql.ini')
+[01/05/26 22:44:33] [INFO] Options instance with id '1' successfully created.
+[01/05/26 22:44:33] [DEBUG] CHandleManager::CreateFromFile - new options = 0xa01d2c0 (id '1')
+[01/05/26 22:44:33] [DEBUG] CHandleManager::Create(this=0xa047b20, host='mysql_db', user='gta_service', pass='****', db='my_server', options=0xa01d2c0)
+[01/05/26 22:44:33] [INFO] Creating new connection handle...
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection(this=0xa01faf0, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xa01d2c0)
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection - new connection = 0xa026bf0
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection(this=0xf3e43010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xa01d2c0)
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection - new connection = 0xa022030
+[01/05/26 22:44:33] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf3e43010, connection=0xf3e43010)
+[01/05/26 22:44:33] [DEBUG] CConnectionPool::CConnectionPool(size=2, this=0xa063450)
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection(this=0xf327e010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xa01d2c0)
+[01/05/26 22:44:33] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf3e43010, connection=0xf3e43010)
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection - new connection = 0xa019aa0
+[01/05/26 22:44:33] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf327e010, connection=0xf327e010)
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection(this=0xf287c010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xa01d2c0)
+[01/05/26 22:44:33] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf327e010, connection=0xf327e010)
+[01/05/26 22:44:33] [DEBUG] CConnection::CConnection - new connection = 0xa0114b0
+[01/05/26 22:44:33] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf287c010, connection=0xf287c010)
+[01/05/26 22:44:33] [INFO] Connection handle with id '1' successfully created.
+[01/05/26 22:44:33] [DEBUG] CHandleManager::Create - new handle = 0xa01fad0
+[01/05/26 22:44:33] [DEBUG] mysql_connect_file: return value: '1'
+[01/05/26 22:44:33] [DEBUG] mysql_errno(1)
+[01/05/26 22:44:33] [DEBUG] CHandle::GetErrorId(this=0xa01fad0)
+[01/05/26 22:44:33] [DEBUG] CConnection::GetError(this=0xa01faf0, connection=0xa026bf0)
+[01/05/26 22:44:33] [DEBUG] CHandle::GetErrorId - return value: true, error id: '0', error msg: ''
+[01/05/26 22:44:33] [DEBUG] mysql_errno: return value: '0'
+[01/05/26 22:44:33] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf287c010, connection=0xf287c010)
+[01/06/26 15:16:49] [INFO] changed log level from 'warning, error' to 'debug, info, warning, error'
+[01/06/26 15:16:49] [DEBUG] mysql_connect_file("mysql.ini")
+[01/06/26 15:16:49] [DEBUG] CHandleManager::CreateFromFile(this=0xb3e0b20, file_path='mysql.ini')
+[01/06/26 15:16:49] [INFO] Options instance with id '1' successfully created.
+[01/06/26 15:16:49] [DEBUG] CHandleManager::CreateFromFile - new options = 0xb3b62c0 (id '1')
+[01/06/26 15:16:49] [DEBUG] CHandleManager::Create(this=0xb3e0b20, host='mysql_db', user='gta_service', pass='****', db='my_server', options=0xb3b62c0)
+[01/06/26 15:16:49] [INFO] Creating new connection handle...
+[01/06/26 15:16:49] [DEBUG] CConnection::CConnection(this=0xb3b8af0, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3b62c0)
+[01/06/26 15:16:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/06/26 15:16:49] [DEBUG] CConnection::CConnection(this=0xf317d010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3b62c0)
+[01/06/26 15:16:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/06/26 15:16:49] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf317d010, connection=0xf317d010)
+[01/06/26 15:16:49] [DEBUG] CConnectionPool::CConnectionPool(size=2, this=0xb3ba240)
+[01/06/26 15:16:49] [DEBUG] CConnection::CConnection(this=0xf2f7f010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3b62c0)
+[01/06/26 15:16:49] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf317d010, connection=0xf317d010)
+[01/06/26 15:16:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/06/26 15:16:49] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf2f7f010, connection=0xf2f7f010)
+[01/06/26 15:16:49] [DEBUG] CConnection::CConnection(this=0xf277d010, host='mysql_db', user='gta_service', passw='****', db='my_server', options=0xb3b62c0)
+[01/06/26 15:16:49] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf2f7f010, connection=0xf2f7f010)
+[01/06/26 15:16:49] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/06/26 15:16:49] [DEBUG] CThreadedConnection::CThreadedConnection(this=0xf277d010, connection=0xf277d010)
+[01/06/26 15:16:49] [INFO] Connection handle with id '1' successfully created.
+[01/06/26 15:16:49] [DEBUG] CHandleManager::Create - new handle = 0xb3b8ad0
+[01/06/26 15:16:49] [DEBUG] mysql_connect_file: return value: '1'
+[01/06/26 15:16:49] [DEBUG] mysql_errno(1)
+[01/06/26 15:16:49] [DEBUG] CHandle::GetErrorId(this=0xb3b8ad0)
+[01/06/26 15:16:49] [DEBUG] CConnection::GetError(this=0xb3b8af0, connection=0xb3bfbf0)
+[01/06/26 15:16:49] [DEBUG] CHandle::GetErrorId - return value: true, error id: '2003', error msg: 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/06/26 15:16:49] [DEBUG] mysql_errno: return value: '2003'
+[01/06/26 15:16:49] [DEBUG] mysql_errno(1)
+[01/06/26 15:16:49] [DEBUG] CHandle::GetErrorId(this=0xb3b8ad0)
+[01/06/26 15:16:49] [DEBUG] CConnection::GetError(this=0xb3b8af0, connection=0xb3bfbf0)
+[01/06/26 15:16:49] [DEBUG] CHandle::GetErrorId - return value: true, error id: '2003', error msg: 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/06/26 15:16:49] [DEBUG] mysql_errno: return value: '2003'
+[01/06/26 15:16:49] [DEBUG] CThreadedConnection::WorkerFunc(this=0xf277d010, connection=0xf277d010)
+[01/07/26 07:12:04] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:04] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:04] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:04] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:56] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:56] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:56] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 07:12:56] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)'
+[01/07/26 16:12:09] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/07/26 16:12:09] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/07/26 16:12:09] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'
+[01/07/26 16:12:09] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2003 'Can't connect to MySQL server on 'mysql_db' (111)'

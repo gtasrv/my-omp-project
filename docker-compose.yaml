@@ -1,0 +1,54 @@
+services: 
+  omp_server: 
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: server_omp
+    restart: always
+    ports: 
+      - "7777:7777/udp"
+      - "7779:7779/udp"
+    volumes: 
+      - ./server/logs:/home/omp/logs
+      - ./server/bans.json:/home/omp/bans.json
+      - ./server/config.json:/home/omp/config.json
+      - ./server/app.js:/home/omp/app.js
+      - gamemodes_data:/home/omp/gamemodes_dev
+      - ./server/gamemodes_dev:/home/omp/gamemodes_dev
+    environment:
+      isDev: ${isDev}
+      MYSQL_CONNECT_HOST: mysql_db
+      MYSQL_CONNECT_USER: ${DATABASE_USER}
+      MYSQL_CONNECT_PASS: ${DATABASE_PASSWORD}
+      MYSQL_CONNECT_DBNAME: ${DATABASE_DBNAME}
+      MYSQL_CONNECT_PORT: 3306
+    depends_on: 
+      - mysql_db
+        
+  mysql_db: 
+    image: mariadb:10.4
+    container_name: omp_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_DBNAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    volumes: 
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin: 
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports: 
+      - "8080:80"
+    environment: 
+      PMA_HOST: mysql_db
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      PMA_PORT: 3306
+    depends_on: 
+      - mysql_db
+
+volumes: 
+  mysql_data:
