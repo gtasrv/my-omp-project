@@ -69,7 +69,7 @@ Ensure your scripts and binaries have executable permissions before building:
 Run the containers in detached mode:
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 3. Monitor Logs
 To see the OMP console and auto-restart triggers in real-time:
