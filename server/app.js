@@ -5,99 +5,125 @@ const fsp = require('fs').promises;
 const iconv = require('iconv-lite');
 
 
-let sampProcess = null;
-
 const OMP_SERVER_PATH = path.resolve(__dirname, 'omp-server');
 const GAMEMODES_DIR = path.resolve(__dirname, 'gamemodes');
 const GAMEMODES_DIR_DEV = path.resolve(__dirname, 'gamemodes_dev');
-const TARGET_GAMEMODES_AMX_FILE = path.join(GAMEMODES_DIR, 'new.amx');
-const SOURCE_GAMEMODES_AMX_FILE_DEV = path.join(GAMEMODES_DIR_DEV, 'new.amx');
+const TARGET_AMX = path.join(GAMEMODES_DIR, 'new.amx');
+const SOURCE_AMX = path.join(GAMEMODES_DIR_DEV, 'new.amx');
 
 const isDev = process.env.isDev === '1';
+let sampProcess = null;
+let isRestarting = false;
+let debounceTimer = null;
+
 
 
 function startServer() {
-    if (sampProcess) {
-        console.log('Сервер запущен уже.');
-        return;
-    }
-    try {
-        sampProcess = spawn(OMP_SERVER_PATH, [], {
-            cwd: path.dirname(OMP_SERVER_PATH)
-        });
-        sampProcess.stdout.on('data', (data) => {
-            const output = iconv.decode(data, 'cp1251');
-            console.log(`${output}`);
-        });
-        sampProcess.stderr.on('data', (data) => {
-            const errorOutput = iconv.decode(data, 'cp1251');
-            console.error(`STDERR: ${errorOutput}`);
-        });
-        sampProcess.on('close', (code) => {
-            console.log(`Сервер остановлен с кодом выхода ${code}`);
-            sampProcess = null;
-        }); 
-    } catch (error) {
-        console.error('Ошибка при запуске сервера:', error);
-    }
+  if (sampProcess) {
+    console.log('Сервер уже запущен.');
+    return;
+  }
+  try {
+    sampProcess = spawn(OMP_SERVER_PATH, [], {
+      cwd: path.dirname(OMP_SERVER_PATH),
+    });
+    sampProcess.stdout.on('data', (data) => {
+      process.stdout.write(iconv.decode(data, 'cp1251'));
+    });
+    sampProcess.stderr.on('data', (data) => {
+      process.stderr.write('STDERR: ' + iconv.decode(data, 'cp1251'));
+    });
+    sampProcess.on('close', (code) => {
+      console.log(`Сервер упал (код ${code})`);
+      sampProcess = null;
+      if (isRestarting) {
+          isRestarting = false;
+          startServer();
+      }
+    });
+    sampProcess.on('error', (err) => {
+      console.error('Ошибка запуска сервера:', err.message);
+      sampProcess = null;
+    });
+  } catch (err) {
+    console.error('Не удалось запустить сервер:', err.message);
+  }
 }
 
 function stopServer() {
-    if (!sampProcess) {
-        console.log('Сервер не запущен.');
-        return;
-    }
-    console.log('Остановка сервера...');
-    sampProcess.kill();
-    sampProcess = null;
+  if (!sampProcess) {
+    console.log('Сервер не запущен.');
+    return;
+  }
+  console.log('Остановка сервера...');
+  sampProcess.kill('SIGTERM');
 }
 
 function restartServer() {
-    if (!sampProcess) {
-        console.log('Сервер не запущен.');
-        return;
-    }
-    stopServer();
-    setTimeout(() => {
-        startServer();
-    }, 7000);
-}
+  if (!sampProcess) {
+      startServer();
+      return;
+  }
+  isRestarting = true;
+  stopServer();
 
-async function copyFile() {
-    const fileExists = fs.existsSync(SOURCE_GAMEMODES_AMX_FILE_DEV);
-    if (!fileExists) {
-        console.error(`Файл ${SOURCE_GAMEMODES_AMX_FILE_DEV} не найден!`);
-        return;
-    }
-    try {
-        await fsp.copyFile(SOURCE_GAMEMODES_AMX_FILE_DEV, TARGET_GAMEMODES_AMX_FILE);
-        console.log('Файл gamemodes/new.amx успешно обновлен из gamemodes_dev/new.amx');
-        restartServer();
-    } catch (error) {
-        console.error('Ошибка при копировании файла:', error);
-        return;
-    }
+}
+async function copyAndRestart() {
+  if (!fs.existsSync(SOURCE_AMX)) {
+    console.error(`Файл не найден: ${SOURCE_AMX}`);
+    return;
+  }
+  try {
+    await fsp.copyFile(SOURCE_AMX, TARGET_AMX);
+    console.log('gamemodes/new.amx обновлён из gamemodes_dev/new.amx');
+    restartServer();
+  } catch (err) {
+    console.error('Ошибка копирования:', err.message);
+  }
 }
 
 function setupDevMode() {
-    if (!isDev) return;
-    console.log('Режим разработки активирован.');
-    if (!fs.existsSync(GAMEMODES_DIR)) fs.mkdirSync(GAMEMODES_DIR, { recursive: true });
-    if (!fs.existsSync(GAMEMODES_DIR_DEV)) fs.mkdirSync(GAMEMODES_DIR_DEV, { recursive: true });
-    if (!fs.existsSync(SOURCE_GAMEMODES_AMX_FILE_DEV)) {
-         console.warn(`ВНИМАНИЕ: Файл ${SOURCE_GAMEMODES_AMX_FILE_DEV} не найден. Отслеживание не начато.`);
-         return;
+  if (!isDev) return;
+  console.log('Режим разработки активирован.');
+
+  fs.mkdirSync(GAMEMODES_DIR, { recursive: true });
+  fs.mkdirSync(GAMEMODES_DIR_DEV, { recursive: true });
+
+  if (!fs.existsSync(SOURCE_AMX)) {
+    console.warn(`ВНИМАНИЕ: ${SOURCE_AMX} не найден — слежение не начато.`);
+    return;
+  }
+
+  let lastMtime = fs.statSync(SOURCE_AMX).mtimeMs;
+
+  setInterval(() => {
+    try {
+      const stat = fs.statSync(SOURCE_AMX);
+      if (stat.mtimeMs !== lastMtime) {
+        lastMtime = stat.mtimeMs;
+        console.log('Изменение обнаружено → обновление и рестарт...');
+        copyAndRestart();
+      }
+    } catch (err) {
+      console.error('Ошибка проверки файла:', err.message);
     }
-    fs.watchFile(SOURCE_GAMEMODES_AMX_FILE_DEV, { interval: 2000 }, (curr, prev) => {
-        if (curr.mtime.getTime() !== prev.mtime.getTime()) {
-            console.log('Обнаружены изменения в gamemodes_dev/new.amx. Обновление gamemodes/new.amx...');
-            copyFile();
-        }
-    });
-}
-function main() {
-    setupDevMode();
-    startServer();
+  }, 1000);
 }
 
-main();
+function shutdown() {
+    console.log('\nЗавершение...');
+    if (sampProcess) {
+        sampProcess.once('close', () => process.exit(0));
+        stopServer();
+        setTimeout(() => process.exit(1), 5000);
+    } else {
+        process.exit(0);
+    }
+}
+
+
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
+
+setupDevMode();
+startServer();

@@ -8,18 +8,18 @@ main(){}
 
 new MySQL:dbHandle;
 
-public OnGameModeInit()
-{
+public OnGameModeInit() {
     dbHandle = mysql_connect_file("mysql.ini");
     if(mysql_errno(dbHandle) != 0) {
-        printf("Ошибка подключения к базе данных %d", mysql_errno(dbHandle));
+        printf("MYSQL ERROR %d", mysql_errno(dbHandle));
     } else { 
-        print("Все гуд, подключение успешно!");
+        print("MYSQL STARTED!");
     }
-	SetGameModeText("My first open.mp gamemode!");
+    SetGameModeText("Builder 0.3.7");
+    printf("%s", "version: 0.3.7");
 	AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646, WEAPON_M4, 500, WEAPON_KNIFE, 1, WEAPON_COLT45, 100);
-	AddStaticVehicle(522, 2493.7583, -1683.6482, 12.9099, 270.8069, -1, -1);
-	return 1;
+    AddStaticVehicle(522, 2493.7583, -1683.6482, 12.9099, 270.8069, -1, -1);
+    return 1;
 }
 
 public OnGameModeExit()
