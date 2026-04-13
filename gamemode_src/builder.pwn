@@ -1,10 +1,13 @@
-main(){}
 #include <open.mp>
 #include "plugins/a_mysql" 
 #include "plugins/streamer"
 #include "plugins/sscanf2"
 #include "plugins/Pawn.CMD"
 #include "plugins/crashdetect"
+#include "plugins/cef"
+
+main(){}
+
 
 new MySQL:dbHandle;
 
@@ -15,6 +18,7 @@ public OnGameModeInit() {
     } else { 
         print("MYSQL STARTED!");
     }
+    CEF_AddResource("webview");
     SetGameModeText("Builder 0.3.7");
     printf("%s", "version: 0.3.7");
 	AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646, WEAPON_M4, 500, WEAPON_KNIFE, 1, WEAPON_COLT45, 100);
@@ -26,14 +30,6 @@ public OnGameModeExit()
 {
 	return 1;
 }
-
-/*
-      ___
-     / __|___ _ __  _ __  ___ _ _
-    | (__/ _ \ '  \| '  \/ _ \ ' \
-     \___\___/_|_|_|_|_|_\___/_||_|
-
-*/
 
 public OnPlayerConnect(playerid)
 {
@@ -402,4 +398,42 @@ public OnVehicleDamageStatusUpdate(vehicleid, playerid)
 public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z)
 {
 	return 1;
+}
+
+
+public OnCefReady(playerid) {
+    CEF_CreateBrowser(playerid, 1, "http://cef/webview/index.html", false);
+    return 1;
+}
+public OnCefBrowserCreated(playerid, browserid, bool:success, E_CEF_CREATE_STATUS:code, const reason[]) {
+    printf("[CEF] Браузер %d для игрока %d: %s (%s)", browserid, playerid, success ? "OK" : "FAIL", reason);
+    if(success) {
+        new name[MAX_PLAYER_NAME];
+        GetPlayerName(playerid, name, sizeof(name));
+
+        new Float:hp;
+        GetPlayerHealth(playerid, hp);
+        new hpInt = floatround(hp, floatround_floor);
+
+        CEF_EmitEvent(playerid, 1, "onPlayerData",
+            CEF_STR(name),
+            CEF_INT(GetPlayerMoney(playerid)),
+            CEF_INT(hpInt)
+        );
+    }
+    return 1;
+}
+public OnCefInitialize(playerid, bool:success, E_CEF_INIT_REASON:reason, const message[]) {
+    printf("[CEF] Init playerid=%d success=%d reason=%d message=%s", playerid, _:success, _:reason, message);
+    return 1;
+}
+
+public OnCefDownloadStart(playerid) {
+    printf("[CEF] Download START playerid=%d", playerid);
+    return 1;
+}
+
+public OnCefDownloadFinish(playerid) {
+    printf("[CEF] Download FINISH playerid=%d", playerid);
+    return 1;
 }

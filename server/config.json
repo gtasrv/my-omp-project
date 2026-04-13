@@ -104,7 +104,6 @@
     "pawn": {
         "legacy_plugins": [
             "mysql.so",
-            "cef.so",
             "crashdetect.so",
             "streamer.so"
         ],
